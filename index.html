@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The World Table — A Collection of Recipes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EEE5;
+    --card:#F8F6EF;
+    --ink:#23211C;
+    --muted:#6C665B;
+    --faint:#9A9284;
+    --pine:#2C5F4F;
+    --brass:#A9812F;
+    --line:rgba(35,33,28,.16);
+    --line-soft:rgba(35,33,28,.09);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Instrument Sans',system-ui,sans-serif;
+    background:var(--paper);color:var(--ink);line-height:1.6;
+    padding:clamp(16px,4vw,64px);
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{max-width:720px;margin:0 auto}
+
+  /* ---- masthead ---- */
+  .masthead{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--pine);padding-bottom:20px;
+  }
+  .masthead .count{color:var(--muted)}
+
+  .title-block{border-top:1.5px solid var(--ink);padding-top:30px}
+  h1{
+    font-family:'Fraunces',Georgia,serif;font-weight:600;
+    font-size:clamp(46px,10vw,92px);line-height:.98;letter-spacing:-.015em;
+    color:var(--ink);
+  }
+  h1 em{font-style:italic;font-weight:500;color:var(--pine)}
+  .lede{
+    max-width:44ch;margin:20px 0 0;font-size:clamp(16px,2.2vw,19px);color:var(--muted);
+  }
+
+  /* ---- contents label ---- */
+  .contents-label{
+    display:flex;align-items:center;gap:16px;margin:48px 0 8px;
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);
+  }
+  .contents-label::after{content:"";flex:1;height:0;border-top:1px solid var(--line)}
+
+  /* ---- dish rows ---- */
+  .list{display:flex;flex-direction:column}
+  a.dish{
+    display:grid;grid-template-columns:120px 1fr auto;gap:22px;align-items:center;
+    text-decoration:none;color:inherit;padding:24px 6px;
+    border-bottom:1px solid var(--line-soft);
+    transition:background .18s ease,padding-left .18s ease;
+  }
+  a.dish:hover{background:var(--card);padding-left:16px}
+  a.dish:focus-visible{outline:2.5px solid var(--brass);outline-offset:2px}
+
+  .origin{font-family:'Space Mono',monospace;font-size:12px;line-height:1.5}
+  .origin .place{color:var(--pine);font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:block}
+  .origin .kind{color:var(--faint);font-size:11px;letter-spacing:.04em}
+
+  .dish-main h2{
+    font-family:'Fraunces',Georgia,serif;font-weight:600;
+    font-size:clamp(24px,4.4vw,32px);line-height:1.06;letter-spacing:-.01em;color:var(--ink);
+  }
+  .dish-main p{font-size:14.5px;color:var(--muted);margin-top:4px;max-width:42ch}
+
+  .meta{display:flex;align-items:center;gap:16px;white-space:nowrap}
+  .meta .cal{font-family:'Space Mono',monospace;font-size:13px;color:var(--ink)}
+  .meta .cal span{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .meta .go{font-family:'Fraunces',serif;font-size:24px;color:var(--pine);transition:transform .18s ease}
+  a.dish:hover .go{transform:translateX(4px)}
+
+  /* ---- up next ---- */
+  .upnext{margin-top:40px;padding:22px 0 4px;border-top:1px solid var(--line)}
+  .upnext .k{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+  .tags{display:flex;flex-wrap:wrap;gap:10px}
+  .tags span{
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.05em;
+    color:var(--muted);border:1px dashed var(--line);padding:6px 12px;border-radius:2px;
+  }
+
+  /* ---- footer ---- */
+  footer{margin-top:44px;padding-top:22px;border-top:1.5px solid var(--ink);
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  footer em{font-family:'Fraunces',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:15px;color:var(--muted)}
+
+  @media(max-width:560px){
+    a.dish{grid-template-columns:1fr auto;grid-template-areas:"origin meta" "main main";gap:10px 16px}
+    .origin{grid-area:origin}.meta{grid-area:meta}.dish-main{grid-area:main}
+    .meta .go{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}a.dish,.meta .go{transition:none}}
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <div class="masthead">
+    <span>An Open Collection</span>
+    <span class="count">Nº 02 · &amp; growing</span>
+  </div>
+
+  <div class="title-block">
+    <h1>The World<br><em>Table</em></h1>
+    <p class="lede">A growing collection of home-cooked dishes from around the world — gathered, tested, and written down to share.</p>
+  </div>
+
+  <div class="contents-label">Contents</div>
+
+  <nav class="list">
+    <a class="dish" href="beef-broccoli.html">
+      <span class="origin"><span class="place">China</span><span class="kind">wok · takeout</span></span>
+      <span class="dish-main">
+        <h2>Beef &amp; Broccoli</h2>
+        <p>Velveted steak and crisp broccoli in a light garlic-ginger sauce.</p>
+      </span>
+      <span class="meta">
+        <span class="cal">280<span>per plate</span></span>
+        <span class="go" aria-hidden="true">→</span>
+      </span>
+    </a>
+
+    <a class="dish" href="mongolian-beef.html">
+      <span class="origin"><span class="place">China</span><span class="kind">wok · sticky glaze</span></span>
+      <span class="dish-main">
+        <h2>Mongolian Beef</h2>
+        <p>Velveted chuck seared in tallow with a sweet, scallion-loaded glaze.</p>
+      </span>
+      <span class="meta">
+        <span class="cal">325<span>per plate</span></span>
+        <span class="go" aria-hidden="true">→</span>
+      </span>
+    </a>
+  </nav>
+
+  <div class="upnext">
+    <div class="k">Up next on the table</div>
+    <div class="tags">
+      <span>Italy</span><span>México</span><span>Japan</span><span>India</span><span>Thailand</span><span>Morocco</span>
+    </div>
+  </div>
+
+  <footer>
+    <span>The World Table</span>
+    <em>gathered from everywhere, cooked at home</em>
+  </footer>
+
+</main>
+</body>
+</html>
