@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mongolian Beef · Chuck &amp; Tallow — House Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3ECDD;--paper-deep:#EADFC7;--red:#C0272D;--oxblood:#7C1519;
+    --gold:#C0932E;--jade:#2E6B4E;--ink:#241C15;--line:rgba(124,21,25,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Karla',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;
+    background-image:radial-gradient(rgba(124,21,25,.03) 1px, transparent 1px);background-size:5px 5px;
+    padding:clamp(14px,3vw,40px);
+  }
+  .box{max-width:940px;margin:0 auto;background:#FBF6EC;border:2px solid var(--red);
+    box-shadow:0 0 0 6px var(--paper), 0 0 0 8px var(--red), 0 24px 60px -30px rgba(36,28,21,.6);
+    padding:clamp(22px,4vw,52px);position:relative;}
+  .box::before{content:"";position:absolute;inset:10px;border:1px solid var(--line);pointer-events:none}
+
+  .hero{text-align:center;position:relative;padding-bottom:8px}
+  .banner{display:inline-block;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.5em;
+    font-size:12px;text-transform:uppercase;color:#FBF6EC;background:var(--red);
+    padding:7px 10px 7px 16px;border-radius:2px;margin-bottom:22px;}
+  .cjk{font-family:'Karla',sans-serif;letter-spacing:.12em;font-size:26px;color:var(--red);display:block;margin-bottom:2px}
+  .hero h1{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.02em;
+    font-size:clamp(38px,8vw,76px);line-height:.94;color:var(--oxblood);}
+  .hero h1 em{font-style:normal;color:var(--red)}
+  .tagline{max-width:48ch;margin:16px auto 0;font-size:clamp(15px,2vw,17px);color:#5a4a3c}
+
+  .pail-wrap{margin:26px auto 4px;width:150px;position:relative}
+  .steam{position:absolute;top:-34px;left:0;right:0;height:40px;display:flex;justify-content:center;gap:16px;opacity:.5}
+  .steam span{display:block;width:3px;height:34px;border-radius:3px;
+    background:linear-gradient(to top,transparent,var(--red));animation:rise 4s ease-in-out infinite;transform-origin:bottom;}
+  .steam span:nth-child(2){animation-delay:.9s;height:40px}
+  .steam span:nth-child(3){animation-delay:1.7s}
+  @keyframes rise{0%{opacity:0;transform:translateY(6px) scaleY(.7)}30%{opacity:.6}
+    100%{opacity:0;transform:translateY(-16px) scaleY(1.2)}}
+
+  .ticket{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin:30px auto 0;border:1.5px dashed var(--line);max-width:560px}
+  .ticket div{flex:1 1 130px;text-align:center;padding:14px 8px;border-right:1.5px dashed var(--line)}
+  .ticket div:last-child{border-right:none}
+  .ticket .k{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+  .ticket .v{font-family:'Oswald',sans-serif;font-weight:600;font-size:26px;color:var(--ink);line-height:1.1;margin-top:2px}
+  .ticket .v small{font-size:12px;font-weight:400;color:#7a6a5c}
+
+  .heading{display:flex;align-items:center;gap:14px;margin:48px 0 22px}
+  .heading h2{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:clamp(19px,3vw,24px);color:var(--oxblood);white-space:nowrap}
+  .heading .rule{flex:1;height:0;border-top:2px solid var(--red)}
+  .heading .stamp{font-family:'Space Mono',monospace;font-size:11px;color:var(--red);border:1.5px solid var(--red);border-radius:50%;padding:8px;transform:rotate(-8deg)}
+
+  .cols{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+  @media(max-width:680px){.cols{grid-template-columns:1fr}}
+
+  ul.menu{list-style:none}
+  ul.menu li{display:flex;align-items:baseline;gap:6px;padding:9px 0;font-size:15.5px}
+  ul.menu li .name{white-space:nowrap}
+  ul.menu li .name b{font-weight:700}
+  ul.menu li .dots{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px)}
+  ul.menu li .amt{font-family:'Space Mono',monospace;font-size:13px;color:var(--oxblood);white-space:nowrap}
+  .subhead{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--jade);margin:8px 0 2px;font-weight:600}
+  .subhead:first-child{margin-top:0}
+  .swap{margin-top:14px;font-size:13.5px;color:#6a5a4c;font-style:italic;border-left:3px solid var(--gold);padding-left:12px}
+
+  .receipt{background:#FCFAF3;border:1px solid var(--line);padding:20px 20px 24px;position:relative;box-shadow:0 8px 24px -18px rgba(36,28,21,.7)}
+  .receipt::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:9px;
+    background:linear-gradient(135deg,#FCFAF3 50%,transparent 51%) 0 0/14px 9px repeat-x,
+      linear-gradient(-135deg,#FCFAF3 50%,transparent 51%) 0 0/14px 9px repeat-x;
+    filter:drop-shadow(0 2px 1px rgba(36,28,21,.12));}
+  .receipt h3{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;text-align:center;text-transform:uppercase;color:var(--red);border-bottom:2px solid var(--ink);padding-bottom:10px}
+  .receipt .per{font-family:'Space Mono',monospace;font-size:10px;text-align:center;color:#8a7a6c;margin:8px 0 4px;letter-spacing:.05em}
+  .receipt dl{font-family:'Space Mono',monospace;font-size:13px}
+  .receipt dl div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dotted var(--line)}
+  .receipt dl div.big{border-bottom:2px solid var(--ink);border-top:2px solid var(--ink);margin-top:4px;font-weight:700}
+  .receipt dt{color:#4a3c30}
+  .receipt dd{color:var(--oxblood);font-weight:700}
+  .receipt .foot{font-family:'Space Mono',monospace;font-size:10px;text-align:center;color:#8a7a6c;margin-top:14px;letter-spacing:.08em}
+
+  ol.steps{list-style:none;counter-reset:step;display:grid;gap:4px}
+  ol.steps li{counter-increment:step;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
+  ol.steps li:last-child{border-bottom:none}
+  ol.steps li::before{content:"No. " counter(step);font-family:'Oswald',sans-serif;font-weight:700;font-size:13px;letter-spacing:.05em;
+    color:#FBF6EC;background:var(--red);padding:6px 9px;border-radius:2px;white-space:nowrap;margin-top:2px;}
+  ol.steps li h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:16px;color:var(--oxblood);margin-bottom:3px}
+  ol.steps li p{font-size:15px}
+
+  .fortune{margin-top:48px;text-align:center;border-top:2px solid var(--red);padding-top:26px}
+  .fortune .slip{display:inline-block;background:#FCFAF3;border:1px solid var(--line);padding:16px 26px;font-style:italic;color:#4a3c30;font-size:15px;max-width:46ch;box-shadow:0 6px 20px -16px rgba(36,28,21,.8)}
+  .fortune .slip b{font-style:normal;color:var(--red)}
+  .fortune .sign{font-family:'Oswald',sans-serif;letter-spacing:.42em;text-transform:uppercase;font-size:12px;color:var(--gold);margin-top:20px}
+
+  a:focus-visible,li:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  @media(prefers-reduced-motion:reduce){.steam span{animation:none;opacity:.35}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main class="box">
+
+  <header class="hero">
+    <span class="banner">Thank You · Enjoy</span>
+
+    <div class="pail-wrap" aria-hidden="true">
+      <div class="steam"><span></span><span></span><span></span></div>
+      <svg viewBox="0 0 150 170" width="150" height="170" role="img">
+        <path d="M40 40 Q75 -8 110 40" fill="none" stroke="#7C1519" stroke-width="2.4"/>
+        <path d="M28 42 L122 42 L110 58 L75 52 L40 58 Z" fill="#FBF6EC" stroke="#C0272D" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M75 52 L75 42" stroke="#C0272D" stroke-width="2.2"/>
+        <path d="M40 58 L110 58 L98 158 L52 158 Z" fill="#FBF6EC" stroke="#C0272D" stroke-width="2.4" stroke-linejoin="round"/>
+        <g fill="none" stroke="#2E6B4E" stroke-width="1.7" stroke-linecap="round">
+          <path d="M60 92 L66 128"/><path d="M66 90 L70 128"/>
+          <path d="M60 92 Q58 84 62 82"/><path d="M66 90 Q70 82 66 80"/>
+        </g>
+        <g fill="none" stroke="#C0272D" stroke-width="1.7" stroke-linecap="round">
+          <path d="M78 100 Q92 106 86 128 Q80 120 78 100 Z"/><path d="M78 100 Q76 94 80 92"/>
+        </g>
+      </svg>
+    </div>
+
+    <span class="cjk">蒙古牛肉 · House Kitchen</span>
+    <h1>Mongolian <em>Beef</em></h1>
+    <p class="tagline">Chuck steak, properly velveted and seared hard in tallow, glazed sweet and sticky with a fraction of the sugar and low-sodium soy. Rich beef, restaurant depth, a lighter tab.</p>
+  </header>
+
+  <section class="ticket" aria-label="At a glance">
+    <div><div class="k">Serves</div><div class="v">4</div></div>
+    <div><div class="k">Cook</div><div class="v">25<small> min</small></div></div>
+    <div><div class="k">Per plate</div><div class="v">325<small> cal</small></div></div>
+    <div><div class="k">Protein</div><div class="v">24<small> g</small></div></div>
+  </section>
+
+  <div class="heading"><h2>The Order</h2><span class="rule"></span><span class="stamp">谢谢</span></div>
+  <div class="cols">
+    <div>
+      <ul class="menu">
+        <li><span class="name"><b>Beef chuck</b>, sliced thin against the grain</span><span class="dots"></span><span class="amt">1 lb</span></li>
+      </ul>
+      <div class="subhead">The velvet</div>
+      <ul class="menu">
+        <li><span class="name">Baking soda</span><span class="dots"></span><span class="amt">½ tsp</span></li>
+        <li><span class="name">Water</span><span class="dots"></span><span class="amt">1 tbsp</span></li>
+        <li><span class="name">Low-sodium soy sauce</span><span class="dots"></span><span class="amt">1 tbsp</span></li>
+        <li><span class="name">Cornstarch</span><span class="dots"></span><span class="amt">2 tbsp</span></li>
+      </ul>
+      <div class="subhead">Sear + glaze</div>
+      <ul class="menu">
+        <li><span class="name"><b>Beef tallow</b> <span style="color:#8a7a6c">(2 tbsp if deep-frying)</span></span><span class="dots"></span><span class="amt">1 tbsp</span></li>
+        <li><span class="name"><b>Green onions</b>, in 2-inch pieces</span><span class="dots"></span><span class="amt">8 stalks</span></li>
+        <li><span class="name">Garlic, minced</span><span class="dots"></span><span class="amt">4 cloves</span></li>
+        <li><span class="name">Fresh ginger, grated</span><span class="dots"></span><span class="amt">1 tbsp</span></li>
+        <li><span class="name">Low-sodium soy sauce</span><span class="dots"></span><span class="amt">¼ cup</span></li>
+        <li><span class="name">Low-sodium broth or water</span><span class="dots"></span><span class="amt">⅓ cup</span></li>
+        <li><span class="name">Brown sugar <span style="color:#8a7a6c">(¼ the usual)</span></span><span class="dots"></span><span class="amt">3 tbsp</span></li>
+        <li><span class="name">Rice vinegar</span><span class="dots"></span><span class="amt">1 tsp</span></li>
+        <li><span class="name">Red pepper flakes <span style="color:#8a7a6c">(optional)</span></span><span class="dots"></span><span class="amt">½ tsp</span></li>
+        <li><span class="name">Toasted sesame oil</span><span class="dots"></span><span class="amt">1 tsp</span></li>
+      </ul>
+      <p class="swap">Chuck is tougher and fattier than flank, so the baking-soda velvet really pays off here. Slice it thin against the grain while it's part-frozen for clean strips. Prefer flank? Drop the velvet rest to 15 min.</p>
+    </div>
+
+    <aside class="receipt" aria-label="Nutrition per serving">
+      <h3>Nutrition ✽ Facts</h3>
+      <p class="per">Per serving — makes 4 · chuck + tallow</p>
+      <dl>
+        <div class="big"><dt>Calories</dt><dd>325</dd></div>
+        <div><dt>Protein</dt><dd>24 g</dd></div>
+        <div><dt>Total fat</dt><dd>18 g</dd></div>
+        <div><dt>Carbs</dt><dd>16 g</dd></div>
+        <div><dt>Fiber</dt><dd>1 g</dd></div>
+        <div><dt>Sugars</dt><dd>10 g</dd></div>
+        <div><dt>Sodium</dt><dd>~650 mg</dd></div>
+      </dl>
+      <p class="foot">✽ estimates · not incl. rice<br>sodium assumes velvet rinsed;<br>~810 mg if not rinsed</p>
+    </aside>
+  </div>
+
+  <div class="heading"><h2>The Method</h2><span class="rule"></span></div>
+  <ol class="steps">
+    <li><div><h4>Velvet the chuck · 30 min</h4><p>Toss the sliced chuck with the baking soda, water, and 1 tbsp soy. Rest 30 minutes — longer than flank needs, because chuck is a working muscle. Then rinse under cold water, squeeze dry, and toss with the cornstarch to a light, even coat. Rinsing is what tenderizes and also washes most of the added sodium away.</p></div></li>
+    <li><div><h4>Mix the glaze</h4><p>Stir together the ¼ cup soy, broth, brown sugar, rice vinegar, sesame oil, and pepper flakes until the sugar begins to dissolve. Set aside.</p></div></li>
+    <li><div><h4>Sear in tallow</h4><p>Melt the tallow in a wok over high heat until it just shimmers. Lay the beef in one layer and sear undisturbed 1 minute for a hard crust, then stir-fry until browned and just cooked, about 2 minutes. Remove to a plate. <em>Deep-frying instead?</em> Heat the tallow to 350°F, fry the coated beef in batches 2–3 min until crisp, and drain.</p></div></li>
+    <li><div><h4>Aromatics</h4><p>Pour off all but a thin film of tallow. Lower to medium, add garlic and ginger, and stir-fry 30 seconds until fragrant, not browned.</p></div></li>
+    <li><div><h4>Build the glaze</h4><p>Pour in the sauce and simmer 1–2 minutes until it reduces, darkens, and coats the back of a spoon.</p></div></li>
+    <li><div><h4>Finish with scallions</h4><p>Return the beef, add the green onions, and toss just until they wilt but stay bright — under a minute. Serve over brown or cauliflower rice.</p></div></li>
+  </ol>
+
+  <footer class="fortune">
+    <div class="slip"><b>Your fortune:</b> Rinse the velvet, get the tallow smoking, sear in one layer — a tender chuck rewards a hot wok. Lucky numbers: 325, 24, 30.</div>
+    <div class="sign">House Kitchen · Thank You Come Again</div>
+  </footer>
+
+</main>
+</body>
+</html>
